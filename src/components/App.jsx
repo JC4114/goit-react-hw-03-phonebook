@@ -7,13 +7,13 @@ import Filter from './Filter/Filter';
 export default class App extends Component {
   state = {
     contacts: [
-      {id: 'id-1', name: 'Rosie Simpson', number: '459-12-56'},
-      {id: 'id-2', name: 'Hermione Kline', number: '443-89-12'},
-      {id: 'id-3', name: 'Eden Clements', number: '645-17-79'},
-      {id: 'id-4', name: 'Annie Copeland', number: '227-91-26'},
+      { id: 'id-1', name: 'Rosie Simpson', number: '459-12-56' },
+      { id: 'id-2', name: 'Hermione Kline', number: '443-89-12' },
+      { id: 'id-3', name: 'Eden Clements', number: '645-17-79' },
+      { id: 'id-4', name: 'Annie Copeland', number: '227-91-26' },
     ],
-    filter: ''
-  }
+    filter: '',
+  };
 
   addContact = contact => {
     const { contacts } = this.state;
@@ -30,6 +30,7 @@ export default class App extends Component {
   };
 
   deleteContact = contactToDelete => {
+    console.log(contactToDelete);
     this.setState(prevState => ({
       contacts: prevState.contacts.filter(
         contact => contact.id !== contactToDelete
@@ -41,18 +42,18 @@ export default class App extends Component {
     this.setState({ filter: event.currentTarget.value.toLowerCase() });
   };
 
-  componentDidMount(){
-   const contacts = localStorage.getItem('contacts')
-    const parsedContacts = JSON.parse(contacts)
+  componentDidMount() {
+    const contacts = localStorage.getItem('contacts');
+    const parsedContacts = JSON.parse(contacts);
 
-    if (parsedContacts){
-      this.setState({contacts:parsedContacts})
+    if (parsedContacts) {
+      this.setState({ contacts: parsedContacts });
     }
   }
 
-  componentDidUpdate(prevProps,prevState){
-    if(this.state.contacts !== prevState.contact){
-      localStorage.setItem('contact', JSON.stringify(this.state.contacts))
+  componentDidUpdate(prevProps, prevState) {
+    if (this.state.contacts !== prevState.contacts) {
+      localStorage.setItem('contacts', JSON.stringify(this.state.contacts));
     }
   }
 
@@ -64,10 +65,14 @@ export default class App extends Component {
     return (
       <div
         style={{
-         
+          // height: '100vh',
+          // display: 'flex',
+          // justifyContent: 'center',
+          // alignItems: 'center',
           margin: '20px',
           width: '700px',
-          
+          // fontSize: 40,
+          // color: '#010101',
         }}
       >
         <h1>Phonebook</h1>

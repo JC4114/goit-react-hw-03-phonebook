@@ -3,6 +3,7 @@ import s from './ContactList.module.css';
 import PropTypes from 'prop-types';
 
 export const ContactList = ({ contacts, onDelete }) => {
+  // const { contacts, onDelete } = this.props;
   return (
     <ul className={s.list}>
       {contacts.map(({ name, number, id }) => (
